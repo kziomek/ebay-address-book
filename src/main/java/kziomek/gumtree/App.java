@@ -2,6 +2,8 @@ package kziomek.gumtree;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -10,10 +12,14 @@ import java.util.List;
  */
 public class App {
 
-    public static void run() throws IOException, URISyntaxException {
+    public static List<Person> loadFile(Path path) throws IOException, URISyntaxException {
 
         CSVReader csvReader = new CSVReader();
-        List<Person> personList = csvReader.readDefaultCSV();
+        return csvReader.readPeopleCSV(path);
+
+    }
+
+    public static void executeTasks(List<Person> personList) {
 
         PersonService personService = new PersonService();
 
@@ -30,8 +36,20 @@ public class App {
     }
 
     public static void main(String args[]) {
+
+        if (args.length != 1) {
+            System.out.println("Run app with file path parameter, i.e.:");
+            System.out.println("java -jar target/gumtree-1.0-SNAPSHOT.jar target/classes/AddressBook.csv");
+            System.exit(0);
+        }
         try {
-            App.run();
+            String filename = args[0];
+            Path path = Paths.get(filename);
+
+            App app = new App();
+            List<Person> persons = app.loadFile(path);
+            app.executeTasks(persons);
+
         } catch (IOException|URISyntaxException  e) {
             e.printStackTrace();
         }
