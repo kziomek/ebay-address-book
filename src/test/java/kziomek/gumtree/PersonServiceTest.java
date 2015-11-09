@@ -41,9 +41,9 @@ public class PersonServiceTest {
         Assert.assertNotNull(personList);
 
         PersonService personService = new PersonService();
-        String oldestPerson = personService.findOldestPerson(personList);
+        Person oldestPerson = personService.findOldestPerson(personList);
 
-        Assert.assertTrue("Wes Jackson".equals(oldestPerson));
+        Assert.assertTrue("Wes Jackson".equals(oldestPerson.getName()));
 
     }
 

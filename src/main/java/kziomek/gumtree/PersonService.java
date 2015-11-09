@@ -1,5 +1,7 @@
 package kziomek.gumtree;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,8 +19,9 @@ public class PersonService {
         return persons.stream().filter(p -> GENDER_MALE.equals(p.getGender())).count();
     }
 
-    public String findOldestPerson(List<Person> persons) {
-        return null;
+    public Person findOldestPerson(List<Person> persons) {
+        persons.sort((p1, p2) -> p1.getBirthDate().compareTo(p2.getBirthDate()));
+        return persons.get(0);
     }
 
     //TODO

@@ -29,6 +29,9 @@ public class CSVReaderTest {
         Assert.assertTrue("Bill McKnight".equals(personList.get(0).getName()));
         Assert.assertTrue("Male".equals(personList.get(4).getGender()));
         Assert.assertTrue(personList.get(2).getBirthDate() != null);
+
+        //TODO assert proper year
+        //Assert.assertTrue(personList.get(2).getBirthDate().getYear() == 1991);
     }
 
     @Test
