@@ -21,13 +21,13 @@ public class CSVReaderTest {
 
         String filename = "AddressBook.csv";
         Path path = Paths.get(ClassLoader.getSystemResource(filename).toURI());
-        
+
         CSVReader csvReader = new CSVReader();
 
         List<Person> personList = csvReader.readPeopleCSV(path);
         Assert.assertTrue(personList.size() == 5);
-
-        System.out.println("run :)");
-
+        Assert.assertTrue("Bill McKnight".equals(personList.get(0).getName()));
+        Assert.assertTrue("Male".equals(personList.get(4).getGender()));
+        Assert.assertTrue(personList.get(2).getBirthDate() != null);
     }
 }

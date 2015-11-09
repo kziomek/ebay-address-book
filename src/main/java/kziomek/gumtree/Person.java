@@ -1,5 +1,6 @@
 package kziomek.gumtree;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -10,7 +11,13 @@ public class Person {
 
     private String name;
     private String gender;
-    private Date birthDate;
+    private LocalDate birthDate;
+
+    public Person(String name, String gender, LocalDate birthDate) {
+        this.name = name;
+        this.gender = gender;
+        this.birthDate = birthDate;
+    }
 
     public String getName() {
         return name;
@@ -28,11 +35,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 }
