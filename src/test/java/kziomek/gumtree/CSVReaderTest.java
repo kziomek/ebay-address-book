@@ -23,11 +23,23 @@ public class CSVReaderTest {
         Path path = Paths.get(ClassLoader.getSystemResource(filename).toURI());
 
         CSVReader csvReader = new CSVReader();
-
         List<Person> personList = csvReader.readPeopleCSV(path);
+
         Assert.assertTrue(personList.size() == 5);
         Assert.assertTrue("Bill McKnight".equals(personList.get(0).getName()));
         Assert.assertTrue("Male".equals(personList.get(4).getGender()));
         Assert.assertTrue(personList.get(2).getBirthDate() != null);
     }
+
+    @Test
+    public void shouldLoadFivePeopleFromDefaultFile() throws IOException, URISyntaxException {
+
+        CSVReader csvReader = new CSVReader();
+        List<Person> personList = csvReader.readDefaultCSV();
+
+        Assert.assertTrue(personList.size() == 5);
+
+    }
+
+
 }

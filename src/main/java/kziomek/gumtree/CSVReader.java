@@ -1,8 +1,10 @@
 package kziomek.gumtree;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -17,6 +19,16 @@ import java.util.stream.Collectors;
 public class CSVReader {
 
     private static final String SEPARATOR = ",";
+
+
+    public List<Person> readDefaultCSV() throws URISyntaxException, IOException {
+
+        String filename = "AddressBook.csv";
+        Path path = Paths.get(ClassLoader.getSystemResource(filename).toURI());
+
+        return readPeopleCSV(path);
+
+    }
 
     public List<Person> readPeopleCSV(Path path) throws IOException {
         return Files.lines(path)
