@@ -36,4 +36,15 @@ public class PersonServiceTest {
         Assert.assertTrue(count == 3);
     }
 
+    @Test
+    public void shouldFindWesJacksonAsOldestPerson() {
+        Assert.assertNotNull(personList);
+
+        PersonService personService = new PersonService();
+        String oldestPerson = personService.findOldestPerson(personList);
+
+        Assert.assertTrue("Wes Jackson".equals(oldestPerson));
+
+    }
+
 }
