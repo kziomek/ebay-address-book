@@ -1,19 +1,13 @@
 package kziomek.gumtree;
 
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
@@ -59,7 +53,6 @@ public class PersonServiceTest {
 
         PersonService personService = new PersonService();
         long days = personService.countDaysBetweenDates(today, yesterday);
-
         Assert.assertTrue(days == 1);
 
     }
@@ -75,6 +68,16 @@ public class PersonServiceTest {
 
         Assert.assertTrue(days == 1);
 
+    }
+
+    @Test
+    public void shouldReturnNumberDaysBetweenBillAndPaulBirthDates(){
+        Assert.assertNotNull(personList);
+        PersonService personService = new PersonService();
+        long days = personService.howManyDaysOlderIsBillThanPaul(personList);
+
+        //2862 calculated by countDaysBetweenDates()
+        Assert.assertTrue(days == 2862);
     }
 
 }

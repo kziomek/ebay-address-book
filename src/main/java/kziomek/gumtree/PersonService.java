@@ -2,8 +2,8 @@ package kziomek.gumtree;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Krzysztof Ziomek
@@ -13,8 +13,8 @@ public class PersonService {
 
     public static final String GENDER_MALE = "Male";
 
-    public static final String NAME_BILL = "Bill";
-    public static final String NAME_PAUL = "Paul";
+    public static final String NAME_BILL = "Bill McKnight";
+    public static final String NAME_PAUL = "Paul Robinson";
 
     public long countMales(List<Person> persons) {
         return persons.stream().filter(p -> GENDER_MALE.equals(p.getGender())).count();
@@ -25,12 +25,15 @@ public class PersonService {
         return persons.get(0);
     }
 
-    //TODO
-    public int howManyDaysOlderIsBillThanPaul(List<Person> persons){
-        return 0;
+    public long howManyDaysOlderIsBillThanPaul(List<Person> persons){
+        List<Person> billAndPaul = persons.stream()
+                .filter(p -> NAME_BILL.equals(p.getName()) || NAME_PAUL.equals(p.getName()))
+                .collect(Collectors.toList());
+
+        return countDaysBetweenDates(billAndPaul.get(0).getBirthDate(), billAndPaul.get(1).getBirthDate() );
     }
 
     protected long countDaysBetweenDates(LocalDate end, LocalDate start) {
-        return ChronoUnit.DAYS.between(end, start);
+        return Math.abs(ChronoUnit.DAYS.between(end, start));
     }
 }
