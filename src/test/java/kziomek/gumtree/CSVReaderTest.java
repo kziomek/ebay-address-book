@@ -30,8 +30,11 @@ public class CSVReaderTest {
         Assert.assertTrue("Male".equals(personList.get(4).getGender()));
         Assert.assertTrue(personList.get(2).getBirthDate() != null);
 
-        //TODO assert proper year
-        //Assert.assertTrue(personList.get(2).getBirthDate().getYear() == 1991);
+        Assert.assertTrue(personList.get(0).getBirthDate().getYear() == 1977);
+        Assert.assertTrue(personList.get(1).getBirthDate().getYear() == 1985);
+        Assert.assertTrue(personList.get(2).getBirthDate().getYear() == 1991);
+        Assert.assertTrue(personList.get(3).getBirthDate().getYear() == 1980);
+        Assert.assertTrue(personList.get(4).getBirthDate().getYear() == 1974);
     }
 
     @Test
