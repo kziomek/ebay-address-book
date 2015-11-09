@@ -6,7 +6,12 @@ Krzysztof Ziomek
 
 email: kziomek@onet.eu
 
-## Test
+## Initialize
+
+    git clone https://github.com/kziomek/ebay-address-book.git
+    cd ebay-address-book/
+
+## Tests
 
     mvn clean test
 
