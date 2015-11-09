@@ -4,6 +4,10 @@ package kziomek.gumtree;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -13,11 +17,14 @@ import java.util.List;
 public class CSVReaderTest {
 
     @Test
-    public void shouldLoadFivePeople() {
+    public void shouldLoadFivePeople() throws IOException, URISyntaxException {
 
+        String filename = "AddressBook.csv";
+        Path path = Paths.get(ClassLoader.getSystemResource(filename).toURI());
+        
         CSVReader csvReader = new CSVReader();
 
-        List<Person> personList = csvReader.readPeopleCSV(null);
+        List<Person> personList = csvReader.readPeopleCSV(path);
         Assert.assertTrue(personList.size() == 5);
 
         System.out.println("run :)");
