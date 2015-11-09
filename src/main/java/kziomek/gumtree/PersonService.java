@@ -1,6 +1,7 @@
 package kziomek.gumtree;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -27,5 +28,9 @@ public class PersonService {
     //TODO
     public int howManyDaysOlderIsBillThanPaul(List<Person> persons){
         return 0;
+    }
+
+    protected long countDaysBetweenDates(LocalDate end, LocalDate start) {
+        return ChronoUnit.DAYS.between(end, start);
     }
 }
