@@ -22,7 +22,6 @@ public class PersonServiceTest {
 
     @Before
     public void init() throws IOException, URISyntaxException {
-        System.out.println("inti");
         CSVReader csvReader = new CSVReader();
         personList = csvReader.readDefaultCSV();
 
@@ -33,7 +32,7 @@ public class PersonServiceTest {
         Assert.assertNotNull(personList);
 
         PersonService personService = new PersonService();
-        int count = personService.countMales(personList);
+        long count = personService.countMales(personList);
         Assert.assertTrue(count == 3);
     }
 

@@ -8,8 +8,7 @@ import java.util.List;
  */
 public class PersonService {
 
-    public int countMales(List<Person> personList) {
-
-        return 0;
+    public long countMales(List<Person> persons) {
+        return persons.stream().filter(p -> "Male".equals(p.getGender())).count();
     }
 }
